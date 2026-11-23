@@ -9,10 +9,13 @@ accuracy/speed benchmarking and documented model selection. Your AI client
 supplies the language model and permissions; ESA supplies local tools, five
 workflow skills, physics guidance and bundled Genesis card resources.
 
-**Version 0.2.0rc29 is a supervised research preview.** Fresh Windows installation
-checks and independent Linux/Codex onboarding passed. Each new scientific case
-still needs its own numerical and model validation. See
-[test results and limitations](QUALIFICATION.md).
+**Version 0.2.0rc29 is a supervised research preview with accumulated scientific
+and software evidence.** An earlier independent real-field campaign generated
+five million retained particles, completed model studies and met its accuracy
+and inference-speed goals. The current scientific engine retains that tested
+code. Local Windows checks, Windows/Linux/macOS CI and independent Linux/Codex
+onboarding also passed. See [qualification and operating scope](QUALIFICATION.md)
+for the evidence, code-continuity comparison and case-specific validation needs.
 
 ## Download and start
 

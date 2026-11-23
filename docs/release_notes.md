@@ -17,6 +17,12 @@ dependencies; uv, Docker and global Genesis skills are not prerequisites.
 
 ## Evidence
 
+- Earlier independent real-field qualification generated five million retained
+  particles, completed 54 fits and met its held-out accuracy and speed goals.
+  Hash comparison confirms the current numerical/training/benchmark engine is
+  unchanged from that campaign.
+- Published-code GitHub CI passed the Windows/Linux/macOS test matrix and
+  full-runtime/source-folder setup jobs on Windows and Linux.
 - 75 focused installed Windows tests passed, along with a fresh full CPU
   source-folder installation and real local MCP checks.
 - Independent native Linux/Codex onboarding passed for both a new project and
@@ -32,11 +38,12 @@ scientific guidance. Read [QUALIFICATION.md](../QUALIFICATION.md) and the
 
 ## Limits
 
-This is a supervised research preview. Setup success is not real-field or model
-qualification. No fresh native Claude/Windows LLM, GPU/HPC, general unattended
-production or live Google authorization/upload qualification is claimed. Each
-scientific case needs its own field/tracking convergence, coordinate/reference,
-domain, model-quality and timing evidence.
+This is a supervised research preview. Earlier scientific campaigns remain
+evidence for unchanged components; the latest setup tests complement them.
+Platform/conversation coverage is recorded separately from practical limits.
+Each new field/model needs suitable convergence, coordinate/reference, domain,
+accuracy and timing checks. Implemented-physics/resource limits and optional
+Google feedback status are described in QUALIFICATION.md.
 
 ## Feedback and ownership
 

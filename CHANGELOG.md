@@ -17,6 +17,10 @@
   onboarding report and release-note draft. Preserved reviewed source bytes through
   Git line-ending settings; numerical code, helper and scientific guidance unchanged.
 
+- Clarified accumulated qualification: retain prior real-field and Windows evidence
+  for unchanged components, add the verified rc22-to-rc29 engine comparison and
+  current cross-platform CI, and separate test coverage from actual operating limits.
+
 ## 0.2.0rc28 — AI-assisted workspace setup candidate
 
 - Added a renameable project ZIP with START_HERE.md, AI-readable SETUP.md,

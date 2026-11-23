@@ -60,7 +60,11 @@ The current source-folder setup and native Linux/Codex onboarding results are in
 [QUALIFICATION.md](../QUALIFICATION.md) and the
 [independent onboarding report](qualification_results.md). Both new/existing
 entry routes and live tool calls after reopening passed at the recorded scope.
-This is distinct from the older scientific and runtime evidence below.
+These checks complement earlier scientific qualification: an independent real-field
+campaign generated five million retained particles and met its model accuracy/speed
+goals. SHA-256 comparison confirms the tracking/generation/training/benchmark core
+used there remains unchanged. Earlier results stay useful for those components;
+their exact case and measured outcome are recorded in QUALIFICATION.md.
 
 
 Installed deterministic tests establish the mechanisms and platforms actually

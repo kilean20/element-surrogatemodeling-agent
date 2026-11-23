@@ -1,8 +1,11 @@
 # Independent first-user onboarding results
 
 **Result: both starting routes passed for ESA 0.2.0rc29.** These tests exercised
-AI-assisted installation and adoption into existing work, not a new scientific
-modeling campaign. They were completed on 2026-11-21, America/New_York.
+AI-assisted installation and adoption into existing work. They were completed
+on 2026-11-21, America/New_York, and add interface evidence to the earlier
+successful scientific campaigns. The [accumulated qualification](../QUALIFICATION.md)
+also covers the five-million-particle real-field study, unchanged numerical
+components, Windows checks and current cross-platform CI.
 
 ## Question and test conditions
 
@@ -96,8 +99,10 @@ Raw prompts/events, failures, source identities and full local result records ar
 retained by the maintainer. They are summarized here without local machine paths,
 account details, credentials or research data.
 
-**Scope:** one manufactured case per entry route and one reopen each. This
-supports supervised first-user onboarding. It does not qualify every client,
-legacy-project conflict, field dataset, scientific model, GPU/HPC resource,
-unattended production campaign or live Google feedback connection. See the
-[qualification summary](../QUALIFICATION.md) and [supported scope](deployment.md).
+**Scope:** this report adds one manufactured case per entry route and one reopen
+each. Linux supplied the test's strong filesystem isolation; Windows installation,
+runtime and tool behavior were checked separately, including in GitHub CI. A
+fresh Windows/Claude conversation would add client-interaction coverage. Earlier
+scientific and software results continue to support unchanged components; they
+are summarized in [qualification](../QUALIFICATION.md), alongside the actual
+[physical/runtime scope](deployment.md).
