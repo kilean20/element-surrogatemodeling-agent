@@ -1,0 +1,329 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "element_surrogate.card_request.v1",
+  "title": "Card request and separate artifact rights",
+  "type": "object",
+  "properties": {
+    "datasets": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "$ref": "#/$defs/metadata"
+        },
+        "particle": {
+          "$ref": "#/$defs/metadata"
+        }
+      },
+      "additionalProperties": false
+    },
+    "model": {
+      "$ref": "#/$defs/metadata"
+    }
+  },
+  "$defs": {
+    "terms": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "spdx_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      }
+    },
+    "rights": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "pending",
+            "confirmed"
+          ]
+        },
+        "subject": {
+          "enum": [
+            "field",
+            "particle",
+            "model"
+          ]
+        },
+        "terms": {
+          "$ref": "#/$defs/terms"
+        },
+        "downstream_use_permitted": {
+          "type": "boolean"
+        },
+        "actor": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "user_statement": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "source_reference": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "confirmed"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "subject",
+              "terms",
+              "downstream_use_permitted",
+              "actor",
+              "user_statement",
+              "source_reference"
+            ]
+          }
+        }
+      ]
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "frontmatter": {
+          "type": "object",
+          "properties": {
+            "discoverability": {
+              "type": "object"
+            },
+            "reusability": {
+              "type": "object",
+              "properties": {
+                "license": {
+                  "type": "object"
+                }
+              }
+            },
+            "design_length_m": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "exclusiveMinimum": 0
+            },
+            "model_length_m": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "model_longitudinal_span_m": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "input_constraints": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            }
+          },
+          "patternProperties": {
+            "^supports_": {
+              "enum": [
+                "Yes",
+                "No"
+              ]
+            }
+          }
+        },
+        "rights_confirmation": {
+          "$ref": "#/$defs/rights"
+        },
+        "sections": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "body": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "capability_confirmation": {
+          "type": "object"
+        },
+        "physical_provenance": {
+          "$ref": "#/$defs/physical_provenance"
+        },
+        "public_interface": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "required": [
+            "native_contract_path",
+            "interface_path"
+          ],
+          "properties": {
+            "native_contract_path": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "interface_path": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          }
+        }
+      }
+    },
+    "physical_provenance": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "design_length": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "value_m",
+            "definition",
+            "source_reference"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "value_m": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "definition": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "source_reference": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          }
+        },
+        "solver_mesh": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "description",
+            "source_reference"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "source_reference": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          }
+        },
+        "field_calculation_currents": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "required": [
+              "current_a",
+              "source_reference"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "current_a": {
+                "type": "number"
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "source_reference": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            }
+          }
+        },
+        "longitudinal_span": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "required": [
+            "input_m",
+            "output_m",
+            "definition",
+            "source_reference"
+          ],
+          "properties": {
+            "input_m": {
+              "type": "number"
+            },
+            "output_m": {
+              "type": "number"
+            },
+            "definition": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "source_reference": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          }
+        }
+      }
+    }
+  }
+}

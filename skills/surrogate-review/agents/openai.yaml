@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review element surrogates"
+  short_description: "Review physics, provenance and model claims"
+  default_prompt: "Use $surrogate-review for this element-surrogate task."

@@ -1,0 +1,14 @@
+{
+  "schema": "element_surrogate.track_compatibility.v1",
+  "runtime": {"executable": "tools/track.exe", "libraries": [], "timeout_s": 600.0},
+  "beam": {"mass_number": 40, "charge": 18, "energy_ev_per_u": 30000000.0},
+  "momentum_constants": {"speed_of_light_m_per_s": 299792458.0, "atomic_mass_unit_ev": 931494028.0},
+  "element": {"file_number": 7, "field_scale": 1.0, "length_m": 0.3, "aperture_shape": "circle", "aperture_m": 0.015},
+  "field": {"path": "inputs/field.table", "filename": "map.#7", "sha256": "REPLACE_WITH_FIELD_SHA256"},
+  "reference": {"path": "studies/independent_probes.npz", "sha256": "REPLACE_WITH_REFERENCE_SHA256", "provenance": "Replace with independently qualified reference method, reconstruction and operating scope"},
+  "straight_lab_planes_z_m": [-0.15, 0.15],
+  "state_units": ["m", "rad", "m", "rad"],
+  "steps": [100, 200, 400],
+  "refinement_limits_native": [1e-7, 1e-7, 1e-7, 1e-7],
+  "compatibility_limits_native": [1e-6, 1e-6, 1e-6, 1e-6]
+}

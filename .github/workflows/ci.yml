@@ -1,0 +1,123 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# AI-ModCon checkers, pinned so that a change upstream cannot silently change our checks.
+env:
+  DISCOVERY_LOCAL_REF: f88a6097f3cddca84aa57d6f44edd0b5d5039ab1
+  GENESIS_SKILLS_REF: b00054a6375c18463de751f2eef8c4d4bf8643ee
+
+jobs:
+  check-lock:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+    - name: Check uv.lock is up-to-date
+      run: uv lock --check
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+      with:
+        enable-cache: true
+    - name: Sync dependencies
+      run: uv sync --group dev
+    - name: Lint with ruff
+      run: uv run ruff check .
+    - name: Format check with ruff
+      run: uv run ruff format . --check
+
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ['3.11', '3.14']
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+      with:
+        enable-cache: true
+    - name: Sync dependencies
+      run: uv sync --group test --python ${{ matrix.python-version }}
+    - name: Run tests with coverage
+      run: uv run --python ${{ matrix.python-version }} pytest --cov=element_surrogate --cov-report=xml
+    - name: Keep the coverage report
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-${{ matrix.os }}-${{ matrix.python-version }}
+        path: coverage.xml
+
+  full-runtime:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+    - uses: actions/checkout@v4
+    - uses: astral-sh/setup-uv@v3
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install the optional CPU neural and Genesis runtime
+      shell: bash
+      run: |
+        uv venv --python 3.11 .full-runtime
+        python_bin=.full-runtime/bin/python
+        if [ "$RUNNER_OS" = Windows ]; then python_bin=.full-runtime/Scripts/python.exe; fi
+        uv pip install --python "$python_bin" '.[full]' pytest pytest-cov --torch-backend cpu
+        "$python_bin" -m pytest --override-ini 'addopts=' -q
+
+    - name: Exercise direct source-folder setup
+      shell: bash
+      run: |
+        python_bin=.full-runtime/bin/python
+        if [ "$RUNNER_OS" = Windows ]; then python_bin=.full-runtime/Scripts/python.exe; fi
+        runtime_dir="$("$python_bin" -c 'import sys; print(sys.prefix)')"
+        "$python_bin" setup_esa.py install --client both --env "$runtime_dir" --reuse-env --torch preserve
+        "$python_bin" setup_esa.py verify --client both --env "$runtime_dir" --reuse-env
+
+  conformance:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Check out AI-ModCon discovery-local (card checker)
+      uses: actions/checkout@v4
+      with:
+        repository: AI-ModCon/discovery-local
+        ref: ${{ env.DISCOVERY_LOCAL_REF }}
+        path: _ext/discovery-local
+    - name: Check out AI-ModCon genesis-skills (skill validator)
+      uses: actions/checkout@v4
+      with:
+        repository: AI-ModCon/genesis-skills
+        ref: ${{ env.GENESIS_SKILLS_REF }}
+        path: _ext/genesis-skills
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install PyYAML
+      run: python -m pip install pyyaml
+    - name: Check the agent card
+      run: python -I _ext/discovery-local/templates/check_card.py cards/agent_card.md
+    - name: Validate skills for every supported client profile
+      shell: bash
+      run: |
+        mapfile -t skills < <(find skills -name SKILL.md -printf '%h\n' | sort)
+        if [ ${#skills[@]} -eq 0 ]; then
+          echo "No skills yet; nothing to validate."
+        else
+          python -I _ext/genesis-skills/tools/validate_skills.py --profile all --no-color "${skills[@]}"
+        fi

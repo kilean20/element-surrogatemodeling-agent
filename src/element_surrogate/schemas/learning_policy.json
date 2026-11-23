@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project-local learning policy, not sharing or workflow authority",
+  "type": "object",
+  "required": ["schema", "mode", "allowed_kinds", "scope", "allow_replacements"],
+  "properties": {
+    "schema": {"const": "element_surrogate.local_learning_policy.v1"},
+    "mode": {"enum": ["manual", "delegated"]},
+    "allowed_kinds": {"type": "array", "uniqueItems": true, "items": {"enum": ["method", "magnet_class_profile", "simulator_profile", "case_record", "lesson", "reference"]}},
+    "scope": {"type": "string", "minLength": 1},
+    "allow_replacements": {"type": "boolean"}
+  },
+  "allOf": [{"if": {"properties": {"mode": {"const": "delegated"}}}, "then": {"properties": {"allowed_kinds": {"minItems": 1}}}}]
+}

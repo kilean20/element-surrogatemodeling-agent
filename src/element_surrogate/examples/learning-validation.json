@@ -1,0 +1,11 @@
+{
+  "schema": "element_surrogate.learning_validation.v1",
+  "entry_sha256": "REPLACE_WITH_CURRENT_ENTRY_HASH",
+  "context_sha256": "REPLACE_WITH_CURRENT_REVIEWED_CONTEXT_HASH",
+  "outcome": "inconclusive",
+  "scope_assessment": "Explain how this lesson fits the recorded delegation",
+  "existing_guidance_comparison": "Identify what installed guidance says and the precise addition or correction",
+  "rationale": "Replace this draft with actual evidence and limitations",
+  "conflicts": [],
+  "evidence": []
+}

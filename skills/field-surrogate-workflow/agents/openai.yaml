@@ -1,0 +1,4 @@
+interface:
+  display_name: "Field to element surrogate"
+  short_description: "Qualify fields and build native neural particle maps"
+  default_prompt: "Use $field-surrogate-workflow for this element-surrogate task."

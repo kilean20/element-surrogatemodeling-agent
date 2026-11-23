@@ -1,0 +1,50 @@
+{
+  "model": {
+    "name": "Replace with this case model name",
+    "rights_confirmation": {
+      "status": "pending"
+    },
+    "sections": {},
+    "physical_provenance": {
+      "design_length": null,
+      "solver_mesh": null,
+      "field_calculation_currents": null,
+      "longitudinal_span": null
+    },
+    "public_interface": null
+  },
+  "datasets": {
+    "field": {
+      "frontmatter": {
+        "supports_discoverability": "Yes",
+        "supports_accessibility": "No",
+        "supports_interoperability": "No",
+        "supports_reusability": "No",
+        "supports_governed_use": "No",
+        "supports_ai_usability": "No",
+        "discoverability": {
+          "release_status": "Draft"
+        }
+      },
+      "rights_confirmation": {
+        "status": "pending"
+      }
+    },
+    "particle": {
+      "frontmatter": {
+        "supports_discoverability": "Yes",
+        "supports_accessibility": "No",
+        "supports_interoperability": "No",
+        "supports_reusability": "No",
+        "supports_governed_use": "No",
+        "supports_ai_usability": "No",
+        "discoverability": {
+          "release_status": "Draft"
+        }
+      },
+      "rights_confirmation": {
+        "status": "pending"
+      }
+    }
+  }
+}

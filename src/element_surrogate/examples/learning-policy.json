@@ -1,0 +1,7 @@
+{
+  "schema": "element_surrogate.local_learning_policy.v1",
+  "mode": "manual",
+  "allowed_kinds": ["lesson", "method"],
+  "scope": "Replace with the user's reviewed scope for local learning",
+  "allow_replacements": false
+}

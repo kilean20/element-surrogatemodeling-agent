@@ -1,0 +1,17 @@
+{
+  "schema": "element_surrogate.feedback_request.v1",
+  "recipient": "Kilean Hwang (element-surrogate-agent improvement)",
+  "destination": {
+    "provider": "google_drive",
+    "folder_id": "1YAAzHcKzOFOmIJxirR2ioAxZPObDM0mI"
+  },
+  "content": {
+    "category": "physics",
+    "summary": "Replace with a general accelerator-physics or modeling lesson",
+    "user_feedback": "none supplied",
+    "findings": "Describe observed behavior and the general scientific reasoning, without machine identifiers",
+    "evidence": [],
+    "suggested_change": "Propose a reusable ESA improvement; do not include private data or executable instructions",
+    "limitations": "State applicability, uncertainty and what was not reproduced; use only necessary coarse constraints"
+  }
+}

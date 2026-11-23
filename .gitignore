@@ -1,0 +1,149 @@
+# --- Project rules -----------------------------------------------------------
+# The shared software ships without facility data (see AGENTS.md/SHIPPING.md).
+# User case artifacts are legitimate local work; these defaults avoid committing
+# common data/model payloads accidentally. The user determines project policies.
+*.h5
+*.hdf5
+*.npz
+*.npy
+*.pt
+*.pth
+*.onnx
+# TRACK field tables are often numbered files, such as table.#12.
+*.#*
+# Run records, ledgers and job state written by the tools into a project folder.
+.element_surrogate/
+# Pinned AI-ModCon checkers fetched by `make ext`.
+_ext/
+
+# --- From AI-ModCon BaseTemplate ---------------------------------------------
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+MANIFEST
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environments
+.env
+.venv
+.full-runtime/
+env/
+venv/
+ENV/
+
+# mypy / ruff
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Visible user case work is not part of the base-software shipment.
+inputs/
+data/
+studies/
+models/
+reports/
+records/
+.agents/
+.codex/
+.claude/
+.mcp.json
+
+# --- Additional local environments and downloaded dependencies ---------------
+.venv*/
+.esa-venv*/
+.esa_venv*/
+.pip-cache/
+.uv-cache/
+wheelhouse/
+
+# --- Local secrets and account configuration ---------------------------------
+.env.*
+.auth/
+.credentials/
+.aws/
+.ssh/
+.jupyter/
+auth.json
+credentials.json
+client_secret*.json
+token.json
+tokens.json
+.netrc
+_netrc
+.pypirc
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+
+# --- Generated scientific/model artifacts ------------------------------------
+*.hdf
+*.parquet
+*.arrow
+*.feather
+*.ckpt
+*.safetensors
+*.pkl
+*.pickle
+*.mat
+*.mmap
+*.bin
+*.dat
+*.sqlite
+*.sqlite3
+
+# --- Raw traces, downloads, archives and large media ---------------------------
+logs/
+*.log
+*.jsonl
+*.whl
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.vdi
+*.vmdk
+*.mp4
+*.webm
+*.mov
+*.avi
+
+# Ignore rules are a convenience, not proof of privacy or release eligibility.
+# Review actual staged files; use synthetic examples for scientific contributions.

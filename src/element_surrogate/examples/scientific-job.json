@@ -1,0 +1,14 @@
+{
+  "schema": "element_surrogate.scientific_job.v1",
+  "operation": "inspect_file",
+  "arguments": {
+    "path": "inputs/replace_with_your_file"
+  },
+  "resources": {
+    "threads": null,
+    "working_memory_bytes": null,
+    "scratch_bytes": null
+  },
+  "max_wall_seconds": null,
+  "time_policy": "active"
+}

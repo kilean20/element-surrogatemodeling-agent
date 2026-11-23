@@ -1,0 +1,4 @@
+interface:
+  display_name: "Field map readiness"
+  short_description: "Assess magnetic data and numerical support"
+  default_prompt: "Use $field-map-readiness for this element-surrogate task."

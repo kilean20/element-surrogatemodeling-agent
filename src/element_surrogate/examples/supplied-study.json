@@ -1,0 +1,262 @@
+{
+  "schema": "element_surrogate.supplied_neural_study.v1",
+  "note": "TEMPLATE ONLY: all illustrative budgets, dimensions, scales and settings require a case decision. No supplied data or qualification exists in this template.",
+  "protocol": {
+    "schema": "element_surrogate.benchmark.v1",
+    "name": "REPLACE-with-case-study-name",
+    "coordinates": [
+      {
+        "name": "x",
+        "unit": "m",
+        "role": "position",
+        "definition": "Horizontal position at the fixed native plane",
+        "error_scale": 1e-05
+      },
+      {
+        "name": "xp",
+        "unit": "rad",
+        "role": "slope",
+        "definition": "Horizontal plane direction ratio",
+        "error_scale": 1e-05
+      },
+      {
+        "name": "y",
+        "unit": "m",
+        "role": "position",
+        "definition": "Vertical position at the fixed native plane",
+        "error_scale": 1e-05
+      },
+      {
+        "name": "yp",
+        "unit": "rad",
+        "role": "slope",
+        "definition": "Vertical plane direction ratio",
+        "error_scale": 1e-05
+      }
+    ],
+    "coordinate_convention": "REPLACE with native frames, fixed reference, charge and slope definitions.",
+    "inputs": [
+      "x",
+      "xp",
+      "y",
+      "yp",
+      "effective_rigidity_tm",
+      "field_scale"
+    ],
+    "input_units": [
+      "m",
+      "rad",
+      "m",
+      "rad",
+      "T*m",
+      "1"
+    ],
+    "forbidden_inputs": [
+      "target",
+      "path_maximum"
+    ],
+    "physics": {
+      "field_sha256": "REPLACE-with-source-or-evidence-sha256",
+      "reference_sha256": "REPLACE-with-source-or-evidence-sha256",
+      "reconstruction_sha256": "REPLACE-with-source-or-evidence-sha256",
+      "integration_qualification_sha256": "REPLACE-with-source-or-evidence-sha256",
+      "region_sha256": "REPLACE-with-source-or-evidence-sha256",
+      "native_planes": true,
+      "qualification_scope": "REPLACE: source declarations versus locally checked evidence.",
+      "boundary_convention": "Fixed native planes, no placement wrapper.",
+      "transport_description": {
+        "REPLACE": "Use the full actual loaded native transport description."
+      }
+    },
+    "dataset": {
+      "identity_sha256": "REPLACE-with-dataset-identity",
+      "access_and_reuse": "REPLACE-with-the-current-user-terms",
+      "split_unit": "particle",
+      "splits": {
+        "train": {
+          "path": "REPLACE-train.npz",
+          "sha256": "REPLACE-with-file-sha256",
+          "rows": 1,
+          "groups": [
+            "REPLACE-with-actual-setting-IDs"
+          ]
+        },
+        "validation": {
+          "path": "REPLACE-validation.npz",
+          "sha256": "REPLACE-with-file-sha256",
+          "rows": 1,
+          "groups": [
+            "REPLACE-with-actual-setting-IDs"
+          ]
+        },
+        "test": {
+          "path": "REPLACE-test.npz",
+          "sha256": "REPLACE-with-file-sha256",
+          "rows": 1,
+          "groups": [
+            "REPLACE-with-actual-setting-IDs"
+          ]
+        }
+      }
+    },
+    "resources": {
+      "max_rows_per_split": 1000000,
+      "max_npz_uncompressed_bytes": 1073741824,
+      "max_checkpoint_bytes": 134217728,
+      "max_study_wall_seconds": 86400,
+      "max_test_wall_seconds": 3600
+    },
+    "candidates": [
+      {
+        "id": "general_control",
+        "architecture": "tanh MLP control",
+        "kind": "stochastic",
+        "seeds": [
+          1
+        ],
+        "configuration": {
+          "schema": "element_surrogate.static_magnetic_mlp.v1",
+          "dimension": 4,
+          "model_family": "mlp",
+          "hidden_widths": [
+            32,
+            32
+          ],
+          "base": "none",
+          "input_normalization": "zero_centered_rms",
+          "output_normalization": "train_rms",
+          "dtype": "float64",
+          "device": "cpu",
+          "threads": 1,
+          "batch_size": 256,
+          "inference_batch_size": 1024,
+          "learning_rate": 0.001,
+          "loss_scales": [
+            1e-05,
+            1e-05,
+            1e-05,
+            1e-05
+          ]
+        },
+        "rationale": "REPLACE: propose physics candidates and matched controls from this field.",
+        "forward_description": "Complete native map including normalization and actual fitted base/correction.",
+        "max_steps": 1000,
+        "max_wall_seconds": 3600
+      }
+    ],
+    "selection": {
+      "primary": "worst_scaled_setting_mean_rmse",
+      "relative_accuracy_tie": 0.01,
+      "incomplete_policy": "refuse"
+    },
+    "timing": {
+      "batch_size": 1024,
+      "repetitions": 10,
+      "warmup_calls": 3,
+      "threads": 1,
+      "input_dtype": "float64",
+      "scope": "adapter_predict_call",
+      "hardware": "REPLACE-with-observed-hardware",
+      "device": "cpu",
+      "synchronization": "synchronous_cpu",
+      "golden_atol": [
+        1e-12,
+        1e-12,
+        1e-12,
+        1e-12
+      ],
+      "included_operations": "Complete native input-to-output map including features, bases and all network calls.",
+      "excluded_operations": "Loading, fitting and file reads."
+    },
+    "reproduction": {
+      "adapter_path": "SET-BY-THE-IMPORTER",
+      "adapter_sha256": "SET-BY-THE-IMPORTER",
+      "software": "REPLACE with installed release and numerical environment"
+    }
+  },
+  "label_provenance": {
+    "description": "REPLACE with producer, source field/transport identities, numerical settings and limitations.",
+    "qualification_status": "source_declared",
+    "split_history": {
+      "train": "unknown",
+      "validation": "unknown",
+      "test": "unknown"
+    }
+  },
+  "physics_review": {
+    "topics": {
+      "controls": {
+        "disposition": "deferred",
+        "candidate_ids": [],
+        "rationale": "REPLACE with measured evidence, an actual candidate comparison, or a case-specific reason for deferral.",
+        "evidence": []
+      },
+      "reference_and_coordinates": {
+        "disposition": "deferred",
+        "candidate_ids": [],
+        "rationale": "REPLACE with measured evidence, an actual candidate comparison, or a case-specific reason for deferral.",
+        "evidence": []
+      },
+      "symmetry": {
+        "disposition": "deferred",
+        "candidate_ids": [],
+        "rationale": "REPLACE with measured evidence, an actual candidate comparison, or a case-specific reason for deferral.",
+        "evidence": []
+      },
+      "theoretical_base": {
+        "disposition": "deferred",
+        "candidate_ids": [],
+        "rationale": "REPLACE with measured evidence, an actual candidate comparison, or a case-specific reason for deferral.",
+        "evidence": []
+      },
+      "limiting_cases": {
+        "disposition": "deferred",
+        "candidate_ids": [],
+        "rationale": "REPLACE with measured evidence, an actual candidate comparison, or a case-specific reason for deferral.",
+        "evidence": []
+      },
+      "canonical_structure": {
+        "disposition": "deferred",
+        "candidate_ids": [],
+        "rationale": "REPLACE with measured evidence, an actual candidate comparison, or a case-specific reason for deferral.",
+        "evidence": []
+      },
+      "scaling_and_metrics": {
+        "disposition": "deferred",
+        "candidate_ids": [],
+        "rationale": "REPLACE with measured evidence, an actual candidate comparison, or a case-specific reason for deferral.",
+        "evidence": []
+      }
+    }
+  },
+  "source_contract": {
+    "transport": {
+      "REPLACE": "Use the full actual loaded native transport description."
+    },
+    "ranges": [
+      [
+        -0.001,
+        0.001
+      ],
+      [
+        -0.001,
+        0.001
+      ],
+      [
+        -0.001,
+        0.001
+      ],
+      [
+        -0.001,
+        0.001
+      ]
+    ],
+    "settings": [
+      {
+        "id": "REPLACE",
+        "effective_rigidity_tm": 1.0,
+        "field_scale": 1.0
+      }
+    ]
+  }
+}

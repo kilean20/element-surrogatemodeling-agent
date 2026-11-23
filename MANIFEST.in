@@ -1,0 +1,10 @@
+include AGENTS.md CHANGELOG.md CONTRIBUTING.md CODE_OF_CONDUCT.md SECURITY.md Makefile
+include .gitattributes
+include uv.lock
+recursive-include docs *.md
+recursive-include cards *.md
+recursive-include tests *.py
+recursive-include skills *.md *.yaml
+recursive-include .github *.md *.yml
+global-exclude *.py[cod]
+include START_HERE.md USER_PROMPTS.md SETUP.md QUALIFICATION.md SHIPPING.md setup_esa.py

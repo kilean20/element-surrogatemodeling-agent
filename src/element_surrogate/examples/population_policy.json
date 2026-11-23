@@ -1,0 +1,7 @@
+{
+  "schema": "element_surrogate.population_policy.v1",
+  "purpose": "full",
+  "minimum_survivors": 100000,
+  "count_basis": "total",
+  "rationale": "Format example only: replace target with this case user decision and adequacy rationale"
+}

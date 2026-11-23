@@ -1,0 +1,17 @@
+{
+  "schema": "element_surrogate.workload_request.v1",
+  "phases": [
+    {
+      "name": "generation",
+      "work_units": 100000,
+      "work_unit": "retained_survivors",
+      "measurement_paths": [],
+      "context": {
+        "hardware": "declare actual hardware and numerical settings"
+      },
+      "assumptions": "No measurements supplied: inconclusive until real pilot receipts exist"
+    }
+  ],
+  "overheads_seconds": null,
+  "resource_prompt_after_hours": 12
+}

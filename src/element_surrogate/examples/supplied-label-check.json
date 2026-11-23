@@ -1,0 +1,12 @@
+{
+  "split": "validation",
+  "sample_rows": 32,
+  "seed": 1,
+  "component_limits": [
+    1e-06,
+    1e-06,
+    1e-06,
+    1e-06
+  ],
+  "note": "Illustrative count/limits; declare a numerically justified case-specific diagnostic."
+}

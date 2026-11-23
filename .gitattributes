@@ -1,0 +1,6 @@
+# Source/install identities and SHA256SUMS include exact bytes, including EOLs.
+# Preserve the reviewed source on add/checkout across Windows and Linux settings.
+# -text disables line-ending conversion; ordinary text diffs remain available.
+* -text
+# Pinned upstream files also retain their original byte identities.
+src/element_surrogate/_vendor/** -text

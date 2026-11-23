@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/ben-hawks/benchmark-builder",
+  "commit": "cf43c3719521ac6ba6f4265b0b052355212ee886",
+  "license": "Apache-2.0",
+  "modifications": "none; short local workflow guidance is separately authored",
+  "sha256": {
+    "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "scripts/score_benchmark.py": "34399df616dcd9f874d0bd10a91e613f7382fef7dad933bafa98d5bff4002426",
+    "scripts/render_card_results.py": "3a837431c21bdfbb35753089974082b5a39c89b6f37b796e96566903fb3c11af",
+    "assets/rubric_template.yaml": "36791a4bb121cda86cf272af6e79ab465759365719b1ae644345cbbbd1869c09"
+  }
+}

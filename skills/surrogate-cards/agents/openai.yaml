@@ -1,0 +1,4 @@
+interface:
+  display_name: "Document element surrogates"
+  short_description: "Prepare model and separate field/data cards"
+  default_prompt: "Use $surrogate-cards for this element-surrogate task."

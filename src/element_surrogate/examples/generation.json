@@ -1,0 +1,9 @@
+{
+  "schema": "element_surrogate.generation_request.v1",
+  "settings": [],
+  "seed": null,
+  "batch_size": null,
+  "max_proposals_per_setting": null,
+  "max_wall_seconds": null,
+  "material_boundary_evidence": "Replace with supplied geometry limits or explicit unknown material boundaries"
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "element_surrogate.uncertainty_review.v1",
+  "purpose": "Record a manufactured numerical research scope; not an approval",
+  "items": [
+    {
+      "id": "geometry",
+      "topic": "Unknown physical geometry",
+      "information_status": "confirmed_unavailable",
+      "analysis": "The user cannot provide geometry. Source, node-support and trajectory evidence must define a numerical region; no mechanical aperture is inferred.",
+      "evidence": ["Replace with actual saved field/support/qualification evidence and the user's answer."],
+      "alternatives": ["Use a numerically qualified research region", "Revisit physical transmission when geometry becomes available"],
+      "action": "continue_scoped",
+      "plan": "Analyze and qualify numerical support, then continue the authorized research map with explicit limits.",
+      "authority_reference": "Replace with the actual task/delegation reference; this example grants no authority.",
+      "continue_work": ["field analysis", "numerical transport qualification", "authorized research generation after existing checks"],
+      "unavailable_outputs": ["physical aperture or transmission certification"],
+      "limitations": ["Numerical survivors are not a physical loss model."],
+      "question": null
+    }
+  ]
+}

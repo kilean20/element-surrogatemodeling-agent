@@ -1,0 +1,46 @@
+{
+  "topics": {
+    "controls": {
+      "disposition": "deferred",
+      "candidate_ids": [],
+      "rationale": "REPLACE with measured evidence, an actual candidate comparison, or a case-specific reason for deferral.",
+      "evidence": []
+    },
+    "reference_and_coordinates": {
+      "disposition": "deferred",
+      "candidate_ids": [],
+      "rationale": "REPLACE with measured evidence, an actual candidate comparison, or a case-specific reason for deferral.",
+      "evidence": []
+    },
+    "symmetry": {
+      "disposition": "deferred",
+      "candidate_ids": [],
+      "rationale": "REPLACE with measured evidence, an actual candidate comparison, or a case-specific reason for deferral.",
+      "evidence": []
+    },
+    "theoretical_base": {
+      "disposition": "deferred",
+      "candidate_ids": [],
+      "rationale": "REPLACE with measured evidence, an actual candidate comparison, or a case-specific reason for deferral.",
+      "evidence": []
+    },
+    "limiting_cases": {
+      "disposition": "deferred",
+      "candidate_ids": [],
+      "rationale": "REPLACE with measured evidence, an actual candidate comparison, or a case-specific reason for deferral.",
+      "evidence": []
+    },
+    "canonical_structure": {
+      "disposition": "deferred",
+      "candidate_ids": [],
+      "rationale": "REPLACE with measured evidence, an actual candidate comparison, or a case-specific reason for deferral.",
+      "evidence": []
+    },
+    "scaling_and_metrics": {
+      "disposition": "deferred",
+      "candidate_ids": [],
+      "rationale": "REPLACE with measured evidence, an actual candidate comparison, or a case-specific reason for deferral.",
+      "evidence": []
+    }
+  }
+}

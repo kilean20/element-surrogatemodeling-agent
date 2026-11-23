@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence-bound local learning review; hashes do not prove truth",
+  "type": "object",
+  "required": ["schema", "entry_sha256", "context_sha256", "outcome", "scope_assessment", "existing_guidance_comparison", "rationale", "conflicts", "evidence"],
+  "properties": {
+    "schema": {"const": "element_surrogate.learning_validation.v1"},
+    "entry_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "context_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "outcome": {"enum": ["supported", "inconclusive", "failed"]},
+    "scope_assessment": {"type": "string", "minLength": 1},
+    "existing_guidance_comparison": {"type": "string", "minLength": 1},
+    "rationale": {"type": "string", "minLength": 1},
+    "conflicts": {"type": "array", "items": {"type": "string"}},
+    "evidence": {"type": "array", "items": {"type": "object", "required": ["path", "sha256", "supports"], "properties": {"path": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "supports": {"type": "string", "minLength": 1}}}}
+  }
+}

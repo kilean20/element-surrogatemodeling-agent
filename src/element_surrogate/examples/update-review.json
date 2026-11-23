@@ -1,0 +1,12 @@
+{
+  "schema": "element_surrogate.client_update_validation.v1",
+  "plan_sha256": "USE_THE_LATEST_STAGED_PLAN_HASH",
+  "context_sha256": "USE_THE_STAGED_CONTEXT_HASH",
+  "checkpoint": "not_reviewed",
+  "rationale": "Draft only; inspect the candidate and current project before adoption",
+  "checks": [
+    {"name": "guidance_and_local_knowledge", "outcome": "not_reviewed", "rationale": "", "evidence": []},
+    {"name": "runtime_and_interfaces", "outcome": "not_reviewed", "rationale": "", "evidence": []},
+    {"name": "affected_project_behavior", "outcome": "not_reviewed", "rationale": "", "evidence": []}
+  ]
+}

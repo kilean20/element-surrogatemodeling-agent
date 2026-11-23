@@ -1,0 +1,15 @@
+{
+  "schema": "element_surrogate.scientific_campaign.v1",
+  "limits": {
+    "threads": null,
+    "working_memory_bytes": null,
+    "scratch_bytes": null,
+    "max_total_job_wall_seconds": null,
+    "max_calendar_seconds": null
+  },
+  "user_authority": {
+    "actor": "Fill from this user's actual supplied decision/delegation",
+    "user_statement": "Replace with verbatim supplied authority; this example is not approval",
+    "source_reference": "Replace with this case's decision source"
+  }
+}

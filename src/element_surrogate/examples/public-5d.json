@@ -1,0 +1,21 @@
+{
+  "state_units": [
+    "mm",
+    "mrad",
+    "mm",
+    "mrad",
+    "1"
+  ],
+  "fixed_controls": {},
+  "default_controls": {},
+  "control_bounds": {
+    "effective_rigidity_tm": [
+      1,
+      1
+    ],
+    "field_scale": [
+      1,
+      1
+    ]
+  }
+}

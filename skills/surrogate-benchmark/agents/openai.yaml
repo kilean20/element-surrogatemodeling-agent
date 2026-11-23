@@ -1,0 +1,4 @@
+interface:
+  display_name: "Element surrogate benchmark"
+  short_description: "Compare particle-map accuracy and inference cost"
+  default_prompt: "Use $surrogate-benchmark to design and verify a bounded model comparison for this element."

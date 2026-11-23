@@ -1,0 +1,139 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "element-surrogate"
+version = "0.2.0rc29"
+description = "Tools, MCP server and skills for an agent that builds neural-network surrogates of one magnet's particle transfer map from its 3D field map"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Kilean Hwang", email = "hwang@frib.msu.edu"}
+]
+keywords = [
+    "accelerator physics",
+    "magnet",
+    "field map",
+    "transfer map",
+    "surrogate model",
+    "neural network",
+    "mcp",
+    "agent",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+
+dependencies = [
+    "h5py>=3.10",
+    "mcp>=2.3,<3",
+    # Patched trace-context parser used by the MCP dependency stack.
+    "opentelemetry-api>=1.45.2",
+    "packaging>=24",
+    "psutil>=5.9,<8",
+    "numpy>=1.26",
+    "pyyaml>=6.0",
+    "scipy>=1.11",
+]
+
+[project.optional-dependencies]
+neural = ["torch>=2.6,<3", "onnx>=1.17,<2", "onnxruntime>=1.20,<2"]
+cards = ["linkml==1.12.1", "jsonschema>=4.23,<5"]
+full = ["torch>=2.6,<3", "onnx>=1.17,<2", "onnxruntime>=1.20,<2", "linkml==1.12.1", "jsonschema>=4.23,<5"]
+
+[project.scripts]
+element-surrogate-mcp = "element_surrogate.mcp_server:main"
+element-surrogate = "element_surrogate.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+element_surrogate = [
+    "schemas/*.json", "examples/*.json",
+    "kb/*.md", "kb/**/*.md",
+    "_vendor/benchmark_builder/LICENSE", "_vendor/benchmark_builder/NOTICE",
+    "_vendor/benchmark_builder/manifest.json", "_vendor/benchmark_builder/assets/*.yaml",
+    "_vendor/genesis/LICENSE", "_vendor/genesis/NOTICE", "_vendor/genesis/*.md",
+    "_vendor/genesis/*.json", "_vendor/genesis/*.txt",
+    "_vendor/genesis/**/*.py", "_vendor/genesis/**/*.md",
+    "_vendor/genesis/**/*.json", "_vendor/genesis/**/*.yaml",
+]
+
+[tool.setuptools.data-files]
+"share/element-surrogate/skills/surrogate-benchmark" = [
+    "skills/surrogate-benchmark/SKILL.md", "skills/surrogate-benchmark/ATTRIBUTION.md",
+]
+"share/element-surrogate/skills/surrogate-benchmark/references" = [
+    "skills/surrogate-benchmark/references/protocol.md",
+    "skills/surrogate-benchmark/references/inference_budgets.md",
+]
+"share/element-surrogate/skills/surrogate-benchmark/agents" = [
+    "skills/surrogate-benchmark/agents/openai.yaml",
+]
+
+"share/element-surrogate/skills/field-surrogate-workflow" = ["skills/field-surrogate-workflow/SKILL.md", "skills/field-surrogate-workflow/ATTRIBUTION.md"]
+"share/element-surrogate/skills/field-surrogate-workflow/agents" = ["skills/field-surrogate-workflow/agents/openai.yaml"]
+"share/element-surrogate/skills/field-map-readiness" = ["skills/field-map-readiness/SKILL.md", "skills/field-map-readiness/ATTRIBUTION.md"]
+"share/element-surrogate/skills/field-map-readiness/agents" = ["skills/field-map-readiness/agents/openai.yaml"]
+"share/element-surrogate/skills/surrogate-review" = ["skills/surrogate-review/SKILL.md", "skills/surrogate-review/ATTRIBUTION.md"]
+"share/element-surrogate/skills/surrogate-review/agents" = ["skills/surrogate-review/agents/openai.yaml"]
+"share/element-surrogate/skills/surrogate-cards" = ["skills/surrogate-cards/SKILL.md", "skills/surrogate-cards/ATTRIBUTION.md"]
+"share/element-surrogate/skills/surrogate-cards/agents" = ["skills/surrogate-cards/agents/openai.yaml"]
+"share/element-surrogate/skills/surrogate-cards/references" = ["skills/surrogate-cards/references/*.md"]
+"share/element-surrogate/skills/field-surrogate-workflow/references" = ["skills/field-surrogate-workflow/references/*.md"]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.1.0",
+    "mypy>=1.0",
+]
+test = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "pyyaml>=6.0",
+    "anyio>=4.0",
+]
+
+[tool.ruff]
+line-length = 100
+extend-exclude = ["src/element_surrogate/_vendor"]
+exclude = [
+    ".git",
+    ".github",
+    "__pycache__",
+    ".mypy_cache",
+    ".ruff_cache",
+    "dist",
+    ".venv",
+    "_ext",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "W"]
+ignore = []
+
+[tool.mypy]
+exclude = "_vendor/"
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+addopts = "--cov=element_surrogate --cov-report=term-missing"

@@ -1,0 +1,11 @@
+{
+  "schema": "element_surrogate.workload_observation.v1",
+  "work_unit": "retained_survivors",
+  "completed_units": 0,
+  "elapsed_seconds": 1,
+  "context": {
+    "hardware": "declare actual hardware and numerical settings"
+  },
+  "included_costs": "Format example, not performance evidence; replace all values from actual pilot",
+  "source_artifacts": []
+}
